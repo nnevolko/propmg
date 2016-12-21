@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'eclipse'
+apply plugin: 'jacoco'
 
 repositories {
     mavenCentral()
@@ -11,4 +12,16 @@ dependencies {
     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.22.1'
 
     testCompile 'junit:junit:4.12'
+}
+
+test {
+    testLogging {
+        showStandardStreams true
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
 }
