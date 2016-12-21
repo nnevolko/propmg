@@ -7,6 +7,7 @@ Property Manager app
 Use Case 1
 ----------
 Add Maintenance Request
+
 1. Login (Login Use Case)
 2. Create New Maintenance Request
 3. Save
@@ -14,6 +15,7 @@ Add Maintenance Request
 Use Case 2
 -----------
 Modify Maintenance Request
+
 1. Login (Login Use Case)
 2. Select Maintenance Request
 3. Modify information
