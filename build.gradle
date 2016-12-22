@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'jacoco'
+apply plugin: 'checkstyle'
 
 repositories {
     mavenCentral()
@@ -25,6 +26,10 @@ jacocoTestReport {
     reports {
         xml.enabled true
     }
+}
+
+checkstyle {
+    ignoreFailures true
 }
 
 task docker(type:Exec) {
