@@ -25,3 +25,32 @@ jacocoTestReport {
         xml.enabled true
     }
 }
+
+task docker(type:Exec) {
+    dependsOn war
+    workingDir rootProject.buildDir.getPath() + '/docker'
+    commandLine 'docker-compose', '-p', rootProject.name, 'up', '--build', '-d'
+    doFirst {
+        copy {
+            from 'tools/docker'
+            into workingDir
+        }
+        copy {
+            from tasks.war.archivePath
+            into workingDir.getPath() + '/tomcat'
+        }
+    }
+}
+
+task dockerRemove {
+    doFirst {
+        exec {
+            workingDir docker.workingDir
+            commandLine 'docker-compose', '-p', rootProject.name, 'stop'
+        }
+        exec {
+            workingDir docker.workingDir
+            commandLine 'docker-compose', '-p', rootProject.name, 'rm', '-f'
+        }
+    }
+}
