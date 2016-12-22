@@ -3,6 +3,7 @@ apply plugin: 'war'
 apply plugin: 'eclipse'
 apply plugin: 'jacoco'
 apply plugin: 'checkstyle'
+apply plugin: 'pmd'
 
 repositories {
     mavenCentral()
@@ -29,6 +30,12 @@ jacocoTestReport {
 }
 
 checkstyle {
+    ignoreFailures true
+}
+
+pmd {
+    ruleSetFiles = files('config/pmd/pmd-rulesets.xml')
+    consoleOutput true
     ignoreFailures true
 }
 
