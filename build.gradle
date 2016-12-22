@@ -12,6 +12,7 @@ dependencies {
     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.22.1'
 
     testCompile 'junit:junit:4.12'
+    testCompile 'org.apache.httpcomponents:httpclient:4.5.2'
 }
 
 test {
@@ -40,6 +41,10 @@ task docker(type:Exec) {
             into workingDir.getPath() + '/tomcat'
         }
     }
+}
+
+test {
+    dependsOn docker
 }
 
 task dockerRemove {

@@ -1,8 +1,9 @@
 language: java
 jdk:
-  - oraclejdk7
   - oraclejdk8
-  - openjdk7
+sudo: required
+services:
+  - docker
 script:
   - gradle check
   - gradle jacocoTestReport
